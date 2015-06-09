@@ -1,0 +1,101 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../resources/css/cabecalho.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/aplicativos.css">
+	<script type="text/javascript" src="../resources/js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="../resources/js/mustache.js"></script>
+	<script type="text/javascript" src="../components/relogio.js"></script>
+	<script type="text/javascript" src="../components/popup.js"></script>
+	<script type="text/javascript" src="../components/menu_superior/menuSuperior.js"></script>
+	<script>
+		
+		$(document).ready(function(){
+			configurarPagina();
+			montarApps();
+			relogio($("#dataHora"));
+			carregarMenu();
+			$("#table").on("touchstart", function(event){
+				alert("asd");
+			});
+		});
+		
+		function configurarPagina(){
+			//TODO Obter configurações do serviço
+			//var config = appController.obterConfiguracoes();
+			$("body").css("background-image","url(../resources/imagens/wallpaper3.jpg)");
+			$("body").css("background-size","100% 100%");
+		}
+		
+		function montarApps(){
+			$.get("/server/aplicativos", function(data){
+				var template = $("#template").html();
+				var view = data;
+				Mustache.parse(template);
+				var rendered = Mustache.render(template, view);
+				$("#target").html(rendered);
+				$(".app").each(function(){
+					$(this).addClass("visivel");
+				});
+				if(view.apps.length > 2){
+					$(".apps table")
+						.css("position","relative")
+						.css("width", ((view.apps.length) * 256) + "px")
+						.css("left", 0);
+				}
+				var xStart = 0;
+				var left = 0;
+				$("#tabela").on("touchstart", function(event){
+					console.log("start");
+					xStart = event.originalEvent.touches[0].pageX;
+				});
+				
+				$("#tabela").on("touchmove", function(event){
+					console.log("move");
+					var andou = parseInt(event.originalEvent.touches[0].pageX) - xStart;
+					$( "#tabela" ).css( "left", andou + left);
+				});
+				
+				$("#tabela").on("touchend", function(event){
+					console.log("stop");
+					left = parseInt($( "#tabela" ).css( "left"));
+				});
+			});			
+		}
+		
+		function fechar(){
+			//TODO fechar
+		}
+		
+		function executarAplicativo(indice) {
+			$.post("/server/executor/abrirAplicativo/" + indice, function(data){
+				console.log(data);
+			});
+		}
+	</script>
+	
+	<script id="template" type="x-tmpl-mustache">
+		<table id="tabela">
+			<tbody>
+			<tr>
+				{{#apps}}
+					<td>
+						<div class="app button" id="app-{{index}}" onclick="executarAplicativo('{{index}}');" title="{{nome}}">
+							<img src="../resources/imagens/{{imagem}}">
+						</div>
+					</td>
+				{{/apps}}
+			</tr>
+			<tbody>
+		</table>
+	</script>
+</head>
+<body>
+	<div class="menu-superior" id="menuSuperior"></div>
+	<div style="clear:both;"></div>
+	<div class="apps" id="target"></div>
+	<div class="rodape">
+		<div id="dataHora"></div>
+	</div>
+</body>
+</html>

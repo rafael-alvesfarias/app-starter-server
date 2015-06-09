@@ -1,0 +1,24 @@
+<script id="menu" type="x-tmpl-mustache">
+	<div class="menu botao-fechar" id="menu-2" onclick="abrirPopupDesligar();"></div>
+</script>
+<script id="popup" type="x-tmpl-mustache">
+	<div id="popupDesligar" class="popup">
+		<h3 class="subtitulo">Selecione a ação desejada:</h3>
+		<div>
+			<table>
+				<tr>
+					<td><input type="button" value="Fechar" onclick="fechar();"/></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="Desligar" onclick="executarComando('desligar');"/></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="Reiniciar" onclick="executarComando('reiniciar');"/></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="Suspender" onclick="executarComando('suspender');"/></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</script>

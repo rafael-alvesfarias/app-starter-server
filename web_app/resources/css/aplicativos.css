@@ -1,0 +1,158 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Segoe UI', sans-serif; 
+	font-size: 22px;
+	font-weight: 200;
+	color: white;
+	line-height: 1.5;
+}
+
+body{
+	background-image: linear-gradient(#002451, #000820);
+	background-repeat: no-repeat;
+}
+
+.titulo{
+	margin-bottom: 30px;
+}
+
+.titulo h1{
+	font-size: 50px;
+}
+
+h1{
+	text-align: center;
+	font-size: 50px;
+	text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
+}
+
+h2{
+	text-align: center;
+	font-size: 32px;
+	opacity: 0.8;
+}
+
+.apps{
+	width: 783px;
+	margin: 0 auto;
+	padding-top: 30px;
+	overflow: hidden;
+}
+
+
+@font-face{
+	font-family: "Digital SF Italic";
+	src: url("../fonts/DigitalSFItalic.ttf");
+}
+
+#dataHora{
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
+	width: 130px;
+	padding-right: 5px;
+	
+}
+
+#dataHora span{
+	font-family: "Digital SF Italic";
+	font-weight: 500;
+	color: white;
+	padding-right: 5px;
+	line-height: 1;
+	float: right;
+	text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
+}
+
+#data{
+	font-size: 16px;
+}
+
+#hora{
+	font-size: 40px;
+}
+
+#diaSemana{
+	font-size: 20px;
+}
+
+.apps img{
+	padding: 10px;
+	height: 236px;
+	width: 236px;
+	opacity: 0.85;
+}
+
+.apps table{
+	width: 100%;
+	border-collpse: collapse;
+}
+
+.apps tbody tr{
+	height: 280px;
+}
+
+.app{
+	width: 256px;
+	height: 256px;
+	margin: 0 auto;
+	visibility: hidden;
+}
+
+.visivel{
+	visibility: visible;
+}
+
+.app-selecionada{
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 150px;
+	margin-bottom: 20px;
+}
+
+.button{
+	background-image: url(../imagens/button1.png);
+	background-repeat: no-repeat;
+}
+
+.button:hover, .selecionado{
+	background-image: url(../imagens/button2.png);
+	background-size: 266px, 266px;
+	width: 266px;
+	height: 266px;
+	-webkit-animation: botaoAnim 0.3s;
+}
+
+.button:hover img, .selecionado img{
+	height: 246px;
+	width: 246px;
+	-webkit-animation: appAnim 0.3s;
+}
+
+@-webkit-keyframes botaoAnim {
+    from {
+    background-size: 256px, 256px;
+	width: 256px;
+	height: 256px;
+	}
+    to {
+    background-size: 266px, 266px;
+	width: 266px;
+	height: 266px;
+	}
+}
+
+@-webkit-keyframes appAnim {
+    from {
+    background-size: 256px, 256px;
+	width: 236px;
+	height: 236px;
+	}
+    to {
+    background-size: 266px, 266px;
+	width: 246px;
+	height: 246px;
+	}
+}

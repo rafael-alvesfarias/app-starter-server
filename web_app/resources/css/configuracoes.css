@@ -1,0 +1,134 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Segoe UI', sans-serif; 
+	font-size: 22px;
+	font-weight: 200;
+	color : #007FC1;
+	line-height: 1.5;
+}
+
+body{
+	background-color: #000820;
+	background-image: linear-gradient(#002451, #000820);
+	background-repeat: no-repeat;
+}
+
+.titulo{
+	margin-bottom: 30px;
+}
+
+h1{
+	text-align: center;
+	font-size: 50px;
+	opacity: 0.8;
+}
+
+h2{
+	text-align: center;
+	font-size: 32px;
+	opacity: 0.8;
+}
+
+.configuracoes{
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.menu-lateral{
+	width: 200px;
+	height: 500px;
+	float: left;
+}
+
+.menu-lateral ul{
+	list-style: none;
+	margin-top: 20px;
+}
+
+.menuConfig{
+	text-align: center;
+	margin-bottom: 8px;
+	background-image: linear-gradient(to right, #000820 5%, #002451 80%);
+	padding:5px;
+	border: 2px solid #002451;
+	border-right:0px;
+	border-radius: 4px 0px 0px 4px;
+	opacity: 0.9;
+}
+
+.menuConfig:hover, .menuConfigSelecionado{
+	background-image: linear-gradient(to right, #FFF, #CCC);
+	border: 2px solid;
+	border-right:0px;
+}
+
+.menu-lateral a{
+	display: block;
+	text-decoration: none;
+}
+
+.configurar{
+	float: left;
+	height: 500px;
+	width: 760px;
+	border: 2px solid #002451;
+	border-radius: 2px;
+	padding: 20px;
+}
+
+.img-app{
+	width: 64px;
+	height: 64px;
+	border: 1px solid #002451;
+	border-radius: 3px;
+}
+
+.img-excluir{
+	width: 32px;
+	heigth: 32px;
+}
+
+#aplicativos table{
+	margin-top: 10px;
+	margin-bottom: 30px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#aplicativos td, #aplicativos th{
+	border: 1px solid #002451;
+	padding: 5px;
+	text-align: center;
+	font-size: 18px;
+}
+
+#aplicativos thead {
+	background-image: linear-gradient(#000820,#080828);
+}
+
+#novaApp table{
+	margin-top: 10px;
+	margin-bottom: 30px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#novaApp td, #novaApp th{
+	padding: 5px;
+	text-align: left;
+	font-size: 18px;
+}
+
+.botoes{
+	padding: 10px;
+	opacity: 0.8;
+}
+
+.botoes input{
+	padding: 8px 40px;
+}
+
+.botaoDireita{
+	float: right;
+}
