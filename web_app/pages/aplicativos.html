@@ -23,8 +23,8 @@
 		function configurarPagina(){
 			//TODO Obter configurações do serviço
 			//var config = appController.obterConfiguracoes();
-			$("body").css("background-image","url(../resources/imagens/wallpaper3.jpg)");
-			$("body").css("background-size","100% 100%");
+			//$("body").css("background-image","url(../resources/imagens/wallpaper3.jpg)");
+			//$("body").css("background-size","100% 100%");
 		}
 		
 		function montarApps(){
@@ -37,29 +37,33 @@
 				$(".app").each(function(){
 					$(this).addClass("visivel");
 				});
-				if(view.apps.length > 2){
+				if(view.apps.length > 3){
 					$(".apps table")
 						.css("position","relative")
 						.css("width", ((view.apps.length) * 256) + "px")
 						.css("left", 0);
+
+					var xStart = 0;
+					var left = 0;
+					var maxLeft = 0;
+					var minLeft = (view.apps.length - 3) * - 256;
+					
+					$("#tabela").on("touchstart", function(event){
+						xStart = event.originalEvent.touches[0].pageX;
+					});
+					
+					$("#tabela").on("touchmove", function(event){
+						var andou = parseInt(event.originalEvent.touches[0].pageX) - xStart + left;
+						if (andou >= minLeft && andou <= maxLeft) {
+							$( "#tabela" ).css( "left", andou);
+						}
+					});
+					
+					$("#tabela").on("touchend", function(event){
+						left = parseInt($( "#tabela" ).css( "left"));
+						console.log($( "#tabela" ).css("left"));
+					});
 				}
-				var xStart = 0;
-				var left = 0;
-				$("#tabela").on("touchstart", function(event){
-					console.log("start");
-					xStart = event.originalEvent.touches[0].pageX;
-				});
-				
-				$("#tabela").on("touchmove", function(event){
-					console.log("move");
-					var andou = parseInt(event.originalEvent.touches[0].pageX) - xStart;
-					$( "#tabela" ).css( "left", andou + left);
-				});
-				
-				$("#tabela").on("touchend", function(event){
-					console.log("stop");
-					left = parseInt($( "#tabela" ).css( "left"));
-				});
 			});			
 		}
 		

@@ -24,7 +24,7 @@ app.post("/server/aplicativos", function(req, res){
 	var aplicativo = req.body;
 	aplicativosService.salvarAplicativo(aplicativo, function() {
 		res.send("success");
-	})
+	});
 });
 
 app.delete("/server/aplicativos/:id", function(req, res){
