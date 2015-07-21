@@ -8,7 +8,7 @@ var executor = require("executorComandos.js")
 exports.abrirAplicativo = function(id){
 	var success = function(aplicativo){
 		executor(aplicativo.local).abrir();
-	}
+	};
 	aplicativosService.obterAplicativoPorId(id, success);
 };
 

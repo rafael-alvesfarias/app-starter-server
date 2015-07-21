@@ -4,6 +4,7 @@ var app = express();
 var aplicativosService = require("./server/service/aplicativosService");
 var executorService = require("./server/service/executorService");
 var bodyParser = require('body-parser');
+var executor = require("executorComandos");
 
 app.use("/app-starter", express.static(path.join(__dirname, "/web_app")));
 
@@ -45,4 +46,5 @@ app.post("/server/executor/executar/:comando", function(req, res){
 
 app.listen(3000, function(){
 	console.log("server started");
+	executor("C:\\Users\\IBM_ADMIN\\Pessoal\\Workspace NodeJS\\run.bat").abrir();
 });
