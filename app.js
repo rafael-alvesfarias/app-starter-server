@@ -6,7 +6,22 @@ var executorService = require("./server/service/executorService");
 var bodyParser = require('body-parser');
 var executor = require("executorComandos");
 
+var multer = require('multer');
+var storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, "./uploads/");
+	},
+	filename: function (req, file, cb) {
+		console.log(file);
+		cb(null, file.originalname);
+	}
+});
+var upload = multer({
+	storage: storage
+});
+
 app.use("/app-starter", express.static(path.join(__dirname, "/web_app")));
+app.use("/images", express.static(path.join(__dirname, "/uploads")));
 
 app.use(bodyParser.json());
 
@@ -44,7 +59,12 @@ app.post("/server/executor/executar/:comando", function(req, res){
 	res.send("success");
 });
 
-app.listen(3000, function(){
+app.post("/server/upload", upload.single("image"), function(req, res){
+	console.log(req.file);
+	res.send("success");
+});
+
+app.listen(8089, function(){
 	console.log("server started");
-	executor("C:\\Users\\IBM_ADMIN\\Pessoal\\Workspace NodeJS\\run.bat").abrir();
+	//executor("C:\\Users\\IBM_ADMIN\\Pessoal\\Workspace NodeJS\\run.bat").abrir();
 });

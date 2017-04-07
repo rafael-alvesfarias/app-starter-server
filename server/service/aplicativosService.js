@@ -28,10 +28,6 @@ exports.obterAplicativoPorId = function(id, success){
  * @param success - função de sucesso.
  */
 exports.salvarAplicativo = function(aplicativo, success){
-	var caminho = aplicativo.imagem.split("\\");
-	aplicativo.imagem = caminho[caminho.length - 1];
-	console.log(aplicativo.imagem);
-	
 	aplicativosDAO.salvar(aplicativo, function(){
 		success();
 	});
